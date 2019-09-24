@@ -9,6 +9,7 @@ import com.ltscu.springbootDemo.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author Administrator
  *
  */
-@RestController
+@Controller
 public class HelloWorld {
 	
 	@Autowired
@@ -25,9 +26,9 @@ public class HelloWorld {
 	
 	@RequestMapping("/hello")
 	@ResponseBody
-	ResponseEntity<String> hello(String name) throws JsonProcessingException {
-	   user.setAge("16");
-	   user.setName("liutong");
+	ResponseEntity<String> hello(String name , String age ) throws JsonProcessingException {
+	   user.setAge(age);
+	   user.setName(name);
 	   ObjectMapper mapper = new ObjectMapper();
 	    String json = mapper.writeValueAsString(user);  
 	    System.out.println(json);
