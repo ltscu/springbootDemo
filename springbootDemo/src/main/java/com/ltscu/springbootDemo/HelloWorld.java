@@ -6,6 +6,8 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ltscu.springbootDemo.entity.User;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,11 +21,13 @@ import org.springframework.web.bind.annotation.RestController;
  *
  */
 @Controller
+@Api(value = "用户测试模块")
 public class HelloWorld {
 	
 	@Autowired
 	private User user;
-	
+
+	@ApiOperation(value = "输入用户名年龄", notes = "根据参数添加用户")
 	@RequestMapping("/hello")
 	@ResponseBody
 	ResponseEntity<String> hello(String name , String age ) throws JsonProcessingException {
