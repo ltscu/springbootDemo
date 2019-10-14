@@ -4,19 +4,23 @@
 package com.ltscu.springbootDemo.entity;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * @author Administrator
  *
  */
+
 @Entity
 @Table(name = "user")
-public class User implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class User extends AbstractEntity  {
+
 	public Long getId() {
 		return id;
 	}
@@ -26,10 +30,11 @@ public class User implements Serializable {
 	}
 
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;//主键
     @Column
     private String name;
+
 
     public String getName() {
         return name;
@@ -49,6 +54,27 @@ public class User implements Serializable {
 
     @Column
     private String age;
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getSalary() {
+        return salary;
+    }
+
+    public void setSalary(String salary) {
+        this.salary = salary;
+    }
+
+    @Column
+    private String address;
+    @Column
+    private String salary;
 
    /* @Override
     public String toString() {

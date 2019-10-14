@@ -46,7 +46,7 @@ public class UserController {
 	}
 	@RequestMapping("/getUser")
 	@ResponseBody
-	ResponseEntity<List<User>> getUser(String name) throws JsonProcessingException {
+	ResponseEntity<List<User>> getUser(String name) {
 		User user=new User();
 		user.setName(name);
 		List<User>  aaa=userService.findByName(name);
@@ -54,4 +54,9 @@ public class UserController {
 		return new ResponseEntity<>(aaa, HttpStatus.OK);
 		//return new ResponseEntity<>(name+"  "+"Hello World!", HttpStatus.OK);
 	}
+	@RequestMapping("/addUser")
+	ResponseEntity  addUser(User user)  {
+		userService.save(user);
+		return new ResponseEntity<>(user, HttpStatus.OK);
+			}
 }
