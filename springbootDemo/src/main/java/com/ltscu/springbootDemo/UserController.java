@@ -13,6 +13,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -55,8 +56,9 @@ public class UserController {
 		//return new ResponseEntity<>(name+"  "+"Hello World!", HttpStatus.OK);
 	}
 	@RequestMapping("/addUser")
-	ResponseEntity  addUser(User user)  {
+	//@ResponseBody
+		public User  addUser(@RequestBody User user)  {
 		userService.save(user);
-		return new ResponseEntity<>(user, HttpStatus.OK);
+		return user;
 			}
 }
