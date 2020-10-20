@@ -1,4 +1,4 @@
 # springbootDemo
 springbootDemo
 
-a springboot demo with mysql, jpa, actutor,mail
+a springboot demo with mysql, jpa, actutor,mail,junit
